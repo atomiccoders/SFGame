@@ -1,29 +1,78 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link to="/">Start</router-link> |
+      <router-link to="/about">O aplikacji</router-link>
     </div>
     <router-view />
   </div>
 </template>
 
 <style lang="scss">
+@import url("https://fonts.googleapis.com/css?family=Kalam&display=swap");
+
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background: radial-gradient(ellipse at center, #00374b 0%, #002533 100%);
+}
 #app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  // font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-family: "Kalam", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  height: 100vh;
+  color: #f0c042;
 }
 #nav {
   padding: 30px;
   a {
     font-weight: bold;
-    color: #2c3e50;
+    color: #795f1f;
     &.router-link-exact-active {
-      color: #42b983;
+      color: #f0c042;
     }
+  }
+}
+input[type="text"] {
+  border: 1px rgba(240, 192, 66, 0.5) solid;
+  height: 25px;
+  width: 150px;
+  padding: 5px 5px;
+  color: #f0c042;
+  text-align: center;
+  font-size: 16px;
+  font-family: "Kalam", Arial, sans-serif;
+  background: #151515;
+  box-shadow: #151515 0px 0px 1px 3px;
+  transition: border-color 0.2s ease;
+  &:focus {
+    border-color: rgba(240, 192, 66, 1);
+    outline: none;
+  }
+}
+input[type="submit"],
+input[type="reset"] {
+  background: #00202c;
+  border: 1px rgba(240, 192, 66, 0.5) solid;
+  padding: 5px 15px;
+  color: #f0c042;
+  font-size: 16px;
+  font-family: "Kalam", Arial, sans-serif;
+  text-transform: uppercase;
+  font-weight: bold;
+  box-shadow: #00202c 0px 0px 1px 5px;
+  transition: border-color 0.2s ease;
+  &:focus,
+  &:hover {
+    border-color: rgba(240, 192, 66, 1);
+    outline: none;
   }
 }
 </style>
