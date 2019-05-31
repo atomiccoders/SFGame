@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h1>Porównywarka opłacalności misji</h1>
     <form class="task">
       <div class="task-first">
         <label for="money_one">Złoto</label>
@@ -80,7 +81,7 @@
       </div>
 
       <div class="submit">
-        <input type="reset" value="Wyczyść" />
+        <input type="reset" value="Wyczyść" @click="reset" />
         <input type="submit" value="Porównaj" @click.prevent="compare" />
       </div>
     </form>
@@ -95,7 +96,7 @@
 
 <script>
 export default {
-  name: "HelloWorld",
+  name: "MissionCalc",
   data() {
     return {
       missions: [
@@ -160,6 +161,14 @@ export default {
       this.showResult = true;
 
       return this.winner;
+    },
+    reset() {
+      this.missions.forEach(element => {
+        element.money = "";
+        element.exp = "";
+        element.time = "";
+        element.ratio = "";
+      });
     }
   }
 };
