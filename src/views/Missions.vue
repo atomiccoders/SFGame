@@ -1,21 +1,20 @@
 <template>
-  <div class="home">
-    <h1>WITAJ</h1>
+  <div class="missions">
+    <MissionCalc />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
+import MissionCalc from "@/components/MissionCalc.vue";
 
 export default {
-  name: "home",
+  name: "Missions",
   components: {
+    MissionCalc
   }
 };
 </script>
 
 <style lang="scss">
-img {
-  max-width: 75%;
-}
 </style>
