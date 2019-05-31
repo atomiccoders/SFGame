@@ -80,13 +80,9 @@
 </template>
 
 <script>
-import Tooltip from '@/components/global/Tooltip'
-
 export default {
   name: 'WeaponCalc',
-  components: {
-    Tooltip
-  },
+  components: {},
   data() {
     return {
       weapons: [
@@ -181,7 +177,7 @@ export default {
     padding: 10px 0;
     label {
       display: block;
-      margin: 10px 0 0;
+      margin: 10px 0 0 -40px;
     }
   }
 

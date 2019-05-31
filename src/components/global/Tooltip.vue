@@ -1,5 +1,5 @@
 <template>
-  <span tooltip="hello world">Pop Up-Right</span>
+  <div class="t-right t-sm full-width" data-tooltip="Top Tooltip">?</div>
 </template>
 
 <script>
@@ -9,206 +9,163 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-:root {
-  --bg: #353539;
-  --alt: #ad4375;
-  --text: #fff;
-  --opacity: 0.9;
-  --accent: #8fd1f2;
-  --shadow: rgba(0, 0, 0, 0.35);
-  --dink: 5px;
-  --ani: 150ms cubic-bezier(0.5, 0, 0.6, 1.3) 1ms forwards;
-}
-
-@keyframes tips-vert {
-  to {
-    opacity: var(--opacity);
-    transform: translate(-50%, 0);
-  }
-}
-
-@keyframes tips-horz {
-  to {
-    opacity: var(--opacity);
-    transform: translate(0, -50%);
-  }
-}
-
-@keyframes tips-diag-right {
-  to {
-    opacity: var(--opacity);
-    transform: translate(-1em, 0);
-  }
-}
-
-@keyframes tips-diag-left {
-  to {
-    opacity: var(--opacity);
-    transform: translate(1em, 0);
-  }
-}
-
-// tooltips
-[tooltip] {
+[data-tooltip] {
+  cursor: pointer;
   position: relative;
-  &::before,
-  &::after {
-    text-transform: none;
-    line-height: 1;
-    font-size: 0.9em;
-    user-select: none;
-    pointer-events: none;
+  display: inline-block;
+  border: 1px #f0c042 solid;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  margin-left: 15px;
+
+  &:before,
+  &:after {
     position: absolute;
-    display: none;
+    visibility: hidden;
     opacity: 0;
+    pointer-events: none;
+    transition: all 0.15s cubic-bezier(0.5, 1, 0.25, 1);
+    z-index: 1;
   }
-  // the dink
-  &::before {
-    content: '';
-    border: var(--dink) solid transparent;
-    z-index: 1001;
-  }
-  // the bubble
-  &::after {
-    content: attr(tooltip);
-    font-family: Helvetica, sans-serif;
+  &:before {
+    padding: 5px;
+    width: 110px;
+    border-radius: 3px;
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    content: attr(data-tooltip);
     text-align: center;
-
-    min-width: 3em;
-    max-width: 21em;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-
-    padding: 1ch 1.5ch;
-    border-radius: 0.3em;
-    box-shadow: 0 1em 2em -0.5em var(--shadow);
-    background: var(--bg);
-    color: var(--text);
-    z-index: 1000;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.2;
   }
-  // show the tooltip
-  &:hover::before,
-  &:hover::after {
-    display: block;
+  &:after {
+    border: 8px solid transparent;
+    width: 0;
+    content: '';
+    font-size: 0;
+    line-height: 0;
   }
-}
-
-[tooltip]:not([flow]),
-[tooltip][flow^='up'] {
-  &::before {
-    bottom: 100%;
-    border-bottom-width: 0;
-    border-top-color: var(--bg);
+  /********** Default Behavior **********/
+  &:hover:before,
+  &:hover:after {
+    visibility: visible;
+    opacity: 1;
   }
-  &::after {
-    bottom: calc(100% + var(--dink));
+  /********** Timeout Variant **********/
+  /* @keyframes timeout {
+    0% {
+      opacity: 1;
+      visibility: visible;
+    }
+    99% {
+      opacity: 1;
+      visibility: visible;
+    }
+    100% {
+      opacity: 0;
+      visibility: hidden;
+    }
   }
-  &::before,
-  &::after {
-    left: 50%;
-    transform: translate(-50%, 0.5em);
+  &:hover:before, &:hover:after {
+    animation: timeout 2s;
+  } */
+  /********** Tooltip Sizes **********/
+  &.t-xl:before {
+    width: 200px;
   }
-}
-
-[tooltip][flow^='down'] {
-  &::before {
-    top: 100%;
-    border-top-width: 0;
-    border-bottom-color: var(--bg);
+  &.t-lg:before {
+    width: 170px;
   }
-  &::after {
-    top: calc(100% + var(--dink));
+  &.t-md:before {
+    width: 140px;
   }
-  &::before,
-  &::after {
-    left: 50%;
-    transform: translate(-50%, -0.5em);
+  &.t-sm:before {
+    width: 110px;
   }
-}
-
-[tooltip][flow$='-left']::after {
-  right: 50%;
-  left: auto;
-}
-
-[tooltip][flow='up-left']::after {
-  transform: translate(1.5em, 0.5em);
-}
-
-[tooltip][flow='down-left']::after {
-  transform: translate(1.5em, -0.5em);
-}
-
-[tooltip][flow='up-right']::after {
-  transform: translate(-1.5em, 0.5em);
-}
-
-[tooltip][flow='down-right']::after {
-  transform: translate(-1.5em, -0.5em);
-}
-
-[tooltip][flow='left'] {
-  &::before {
-    top: 50%;
-    border-right-width: 0;
-    border-left-color: var(--bg);
-    left: calc(0em - var(--dink));
-    transform: translate(0.5em, -50%);
+  &.t-xs:before {
+    width: 80px;
   }
-  &::after {
-    top: 50%;
-    right: calc(100% + var(--dink));
-    transform: translate(0.5em, -50%);
+  /********** Top Tooltip **********/
+  &.t-top {
+    &:before {
+      bottom: 100%;
+      left: 50%;
+      margin-bottom: 5px;
+      transform: translateX(-50%);
+    }
+    &:after {
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border-top: 8px solid #000;
+      border-bottom: none;
+    }
+    &:hover:before,
+    &:hover:after {
+      transform: translateX(-50%) translateY(-5px);
+    }
   }
-}
-
-[tooltip][flow='right'] {
-  &::before {
-    top: 50%;
-    border-left-width: 0;
-    border-right-color: var(--bg);
-    right: calc(0em - var(--dink));
-    transform: translate(-0.5em, -50%);
+  /********** Right Tooltip **********/
+  &.t-right {
+    &:before {
+      top: 50%;
+      left: 100%;
+      margin-left: 8px;
+      transform: translateY(-50%);
+    }
+    &:after {
+      top: 50%;
+      left: 100%;
+      transform: translateY(-50%);
+      border-right: 8px solid rgb(0, 0, 0, 0.7);
+      border-left: none;
+    }
+    &:hover:before,
+    &:hover:after {
+      transform: translateX(5px) translateY(-50%);
+    }
   }
-  &::after {
-    top: 50%;
-    left: calc(100% + var(--dink));
-    transform: translate(-0.5em, -50%);
+  /********** Bottom Tooltip **********/
+  &.t-bottom {
+    &:before {
+      top: 100%;
+      left: 50%;
+      margin-top: 5px;
+      transform: translateX(-50%);
+    }
+    &:after {
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border-bottom: 8px solid #000;
+      border-top: none;
+    }
+    &:hover:before,
+    &:hover:after {
+      transform: translateX(-50%) translateY(5px);
+    }
   }
-}
-
-// FX: do the thing
-[tooltip]:not([flow]):hover,
-[tooltip][flow^='up']:hover,
-[tooltip][flow^='down']:hover {
-  &::before,
-  &::after {
-    animation: tips-vert var(--ani);
-  }
-}
-
-[tooltip][flow$='-right']:hover::after {
-  animation: tips-diag-right var(--ani);
-}
-
-[tooltip][flow$='-left']:hover::after {
-  animation: tips-diag-left var(--ani);
-}
-
-[tooltip][flow='left']:hover,
-[tooltip][flow='right']:hover {
-  &::before,
-  &::after {
-    animation: tips-horz var(--ani);
-  }
-}
-
-// don't show empty tooltips
-[tooltip=''] {
-  &::after,
-  &::before {
-    display: none !important;
+  /********** Left Tooltip **********/
+  &.t-left {
+    &:before {
+      top: 50%;
+      right: 100%;
+      margin-right: 5px;
+      transform: translateY(-50%);
+    }
+    &:after {
+      top: 50%;
+      right: 100%;
+      transform: translateY(-50%);
+      border-left: 8px solid #000;
+      border-right: none;
+    }
+    &:hover:before,
+    &:hover:after {
+      transform: translateX(-5px) translateY(-50%);
+    }
   }
 }
 </style>
