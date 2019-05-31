@@ -1,12 +1,21 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Start</router-link> |
-      <router-link to="/about">O aplikacji</router-link>
-    </div>
+    <Menu />
+    <img alt="Vue logo" src="./assets/sflogo.png" />
     <router-view />
   </div>
 </template>
+
+<script>
+import Menu from "./components/Menu";
+
+export default {
+  name: "App",
+  components: {
+    Menu
+  }
+};
+</script>
 
 <style lang="scss">
 @import url("https://fonts.googleapis.com/css?family=Kalam&display=swap");
@@ -31,12 +40,19 @@ body {
   color: #f0c042;
 }
 #nav {
+  list-style-type: none;
   padding: 30px;
-  a {
-    font-weight: bold;
-    color: #795f1f;
-    &.router-link-exact-active {
-      color: #f0c042;
+  li {
+    display: inline-block;
+    margin-right: 15px;
+    a {
+      text-decoration: none;
+      text-transform: uppercase;
+      font-weight: bold;
+      color: #795f1f;
+      &.router-link-exact-active {
+        color: #f0c042;
+      }
     }
   }
 }
