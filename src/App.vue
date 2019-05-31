@@ -7,18 +7,18 @@
 </template>
 
 <script>
-import Menu from "./components/Menu";
+import Menu from './components/Menu'
 
 export default {
-  name: "App",
+  name: 'App',
   components: {
     Menu
   }
-};
+}
 </script>
 
 <style lang="scss">
-@import url("https://fonts.googleapis.com/css?family=Kalam&display=swap");
+@import url('https://fonts.googleapis.com/css?family=Kalam&display=swap');
 
 *,
 *:before,
@@ -32,7 +32,7 @@ body {
 }
 #app {
   // font-family: "Avenir", Helvetica, Arial, sans-serif;
-  font-family: "Kalam", Arial, sans-serif;
+  font-family: 'Kalam', Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -56,7 +56,7 @@ body {
     }
   }
 }
-input[type="text"] {
+input[type='text'] {
   border: 1px rgba(240, 192, 66, 0.5) solid;
   height: 25px;
   width: 150px;
@@ -64,7 +64,7 @@ input[type="text"] {
   color: #f0c042;
   text-align: center;
   font-size: 16px;
-  font-family: "Kalam", Arial, sans-serif;
+  font-family: 'Kalam', Arial, sans-serif;
   background: #151515;
   box-shadow: #151515 0px 0px 1px 3px;
   transition: border-color 0.2s ease;
@@ -73,14 +73,14 @@ input[type="text"] {
     outline: none;
   }
 }
-input[type="submit"],
-input[type="reset"] {
+input[type='submit'],
+input[type='reset'] {
   background: #00202c;
   border: 1px rgba(240, 192, 66, 0.5) solid;
   padding: 5px 15px;
   color: #f0c042;
   font-size: 16px;
-  font-family: "Kalam", Arial, sans-serif;
+  font-family: 'Kalam', Arial, sans-serif;
   text-transform: uppercase;
   font-weight: bold;
   box-shadow: #00202c 0px 0px 1px 5px;

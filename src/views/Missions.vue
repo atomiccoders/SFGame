@@ -6,15 +6,14 @@
 
 <script>
 // @ is an alias to /src
-import MissionCalc from "@/components/MissionCalc.vue";
+import MissionCalc from '@/components/MissionCalc.vue'
 
 export default {
-  name: "Missions",
+  name: 'Missions',
   components: {
     MissionCalc
   }
-};
+}
 </script>
 
-<style lang="scss">
-</style>
+<style lang="scss"></style>

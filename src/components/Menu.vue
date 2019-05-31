@@ -36,22 +36,22 @@
 
 <script>
 export default {
-  name: "Menu",
+  name: 'Menu',
   data() {
     return {
       menuOpen: false
-    };
+    }
   },
   methods: {
     closeMenu() {
-      this.menuOpen = false;
+      this.menuOpen = false
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
-@import url("https://fonts.googleapis.com/css?family=Cutive+Mono");
+@import url('https://fonts.googleapis.com/css?family=Cutive+Mono');
 
 label {
   font-size: 1.2em;
@@ -91,7 +91,7 @@ label {
     &:after,
     &:before {
       transition: 0.5s ease-in-out;
-      content: "";
+      content: '';
       position: absolute;
       display: block;
       width: 100%;

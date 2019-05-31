@@ -96,82 +96,82 @@
 
 <script>
 export default {
-  name: "MissionCalc",
+  name: 'MissionCalc',
   data() {
     return {
       missions: [
         {
           id: 1,
-          money: "",
-          exp: "",
-          time: "",
-          ratio: ""
+          money: '',
+          exp: '',
+          time: '',
+          ratio: ''
         },
         {
           id: 2,
-          money: "",
-          exp: "",
-          time: "",
-          ratio: ""
+          money: '',
+          exp: '',
+          time: '',
+          ratio: ''
         },
         {
           id: 3,
-          money: "",
-          exp: "",
-          time: "",
-          ratio: ""
+          money: '',
+          exp: '',
+          time: '',
+          ratio: ''
         }
       ],
       showResult: false,
       winner: {}
-    };
+    }
   },
   methods: {
     convert_time(time) {
-      const str = time.split(":");
+      const str = time.split(':')
       // return (parseInt(str[0], 10)) * 60 + (parseInt(str[1], 10));
-      return +str[0] * 60 + +str[1];
+      return +str[0] * 60 + +str[1]
     },
     compare() {
       const ratio_one =
-        this.missions[0].time !== ""
+        this.missions[0].time !== ''
           ? this.missions[0].exp / this.convert_time(this.missions[0].time)
-          : 0;
+          : 0
       const ratio_two =
-        this.missions[1].time !== ""
+        this.missions[1].time !== ''
           ? this.missions[1].exp / this.convert_time(this.missions[1].time)
-          : 0;
+          : 0
       const ratio_three =
-        this.missions[2].time !== ""
+        this.missions[2].time !== ''
           ? this.missions[2].exp / this.convert_time(this.missions[2].time)
-          : 0;
+          : 0
 
-      console.log(ratio_one, ratio_two, ratio_three);
+      console.log(ratio_one, ratio_two, ratio_three)
 
       if (ratio_one >= ratio_two && ratio_one >= ratio_three) {
-        this.winner = this.missions[0];
-        this.missions[0].ratio = ratio_one;
+        this.winner = this.missions[0]
+        this.missions[0].ratio = ratio_one
       } else if (ratio_two >= ratio_three && ratio_two >= ratio_one) {
-        this.winner = this.missions[1];
-        this.missions[1].ratio = ratio_two;
+        this.winner = this.missions[1]
+        this.missions[1].ratio = ratio_two
       } else {
-        this.winner = this.missions[2];
-        this.missions[2].ratio = ratio_three;
+        this.winner = this.missions[2]
+        this.missions[2].ratio = ratio_three
       }
-      this.showResult = true;
+      this.showResult = true
 
-      return this.winner;
+      return this.winner
     },
     reset() {
       this.missions.forEach(element => {
-        element.money = "";
-        element.exp = "";
-        element.time = "";
-        element.ratio = "";
-      });
+        element.money = ''
+        element.exp = ''
+        element.time = ''
+        element.ratio = ''
+      })
     }
   }
-};
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -197,7 +197,7 @@ export default {
   .submit {
     flex: 100%;
     padding: 20px 0;
-    input[type="reset"] {
+    input[type='reset'] {
       margin-right: 20px;
     }
   }
