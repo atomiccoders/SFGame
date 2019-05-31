@@ -1,4 +1,4 @@
-# sfgame
+# Shakes&Fidget game helper
 
 ## Project setup
 ```

@@ -22,7 +22,9 @@
         </router-link>
       </li>
       <li>
-        <router-link to="/misje" @click.native="closeMenu">Bronie</router-link>
+        <router-link :to="{ name: 'weapons' }" @click.native="closeMenu">
+          Bronie
+        </router-link>
       </li>
       <li>Informacje</li>
       <li>
