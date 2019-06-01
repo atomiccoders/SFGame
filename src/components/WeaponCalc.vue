@@ -10,58 +10,67 @@
           id="main_attr"
           v-model="main_attr"
         />
-        <Tooltip />
+        <Tooltip
+          msg="Wojownik/Berserk/Palladyn - Siła\n Mag - Inteligencja\n Zwiadowca/Zabójca - Zręczność"
+        />
       </div>
 
       <div class="weapon-first">
-        <label for="money_one">Złoto</label>
+        <label for="minDmg_one">Minimalne obrażenia</label>
         <input
           type="text"
-          name="money_one"
-          id="money_one"
-          v-model="weapons[0].money"
+          name="minDmg_one"
+          id="minDmg_one"
+          v-model="weapons[0].minDmg"
         />
 
-        <label for="exp_one">Doświadczenie</label>
+        <label for="maxHit_one">Maksymalne obrażenia</label>
         <input
           type="text"
-          name="exp_one"
-          id="exp_one"
-          v-model="weapons[0].exp"
+          name="maxDmg_one"
+          id="maxDmg_one"
+          v-model="weapons[0].maxDmg"
         />
 
-        <label for="time_one">Czas</label>
+        <label for="addAttr_one">Wartość do cechy głównej</label>
         <input
           type="text"
-          name="time_one"
-          id="time_one"
-          v-model="weapons[0].time"
+          name="addAttr_one"
+          id="addAttr_one"
+          v-model="weapons[0].addAttr"
         />
       </div>
 
+      <div class="result" :class="{ show: showResult }">
+        <h4>Wynik:</h4>
+        <p>Lepsza jest broń nr {{ winner.id }}</p>
+        <p>Obrażenia: {{ winner.minHit }} - {{ winner.maxHit }}</p>
+        <p>Średnie obrażenia: {{ winner.avgHit }}</p>
+      </div>
+
       <div class="weapon-second">
-        <label for="money_two">Złoto</label>
+        <label for="minDmg_two">Minimalne obrażenia</label>
         <input
           type="text"
-          name="money_two"
-          id="money_two"
-          v-model="weapons[1].money"
+          name="minDmg_two"
+          id="minDmg_two"
+          v-model="weapons[1].minDmg"
         />
 
-        <label for="exp_two">Doświadczenie</label>
+        <label for="maxHit_two">Maksymalne obrażenia</label>
         <input
           type="text"
-          name="exp_two"
-          id="exp_two"
-          v-model="weapons[1].exp"
+          name="maxDmg_two"
+          id="maxDmg_two"
+          v-model="weapons[1].maxDmg"
         />
 
-        <label for="time_two">Czas</label>
+        <label for="addAttr_two">Wartość do cechy głównej</label>
         <input
           type="text"
-          name="time_two"
-          id="time_two"
-          v-model="weapons[1].time"
+          name="addAttr_two"
+          id="addAttr_two"
+          v-model="weapons[1].addAttr"
         />
       </div>
 
@@ -71,11 +80,12 @@
       </div>
     </form>
 
-    <div class="result" v-if="showResult">
+    <!-- <div class="result" v-if="showResult">
       <h4>Wynik:</h4>
-      <p>Wygrała opcja nr {{ winner.id }}</p>
-      <p>Ratio: {{ winner.ratio.toFixed(2) }}</p>
-    </div>
+      <p>Lepsza jest broń nr {{ winner.id }}</p>
+      <p>Obrażenia: {{ winner.minHit }} - {{ winner.maxHit }}</p>
+      <p>Średnie obrażenia: {{ winner.avgHit }}</p>
+    </div>-->
   </div>
 </template>
 
@@ -85,20 +95,25 @@ export default {
   components: {},
   data() {
     return {
+      main_attr: '',
       weapons: [
         {
           id: 1,
-          money: '',
-          exp: '',
-          time: '',
-          ratio: ''
+          minDmg: '',
+          maxDmg: '',
+          addAttr: '',
+          minHit: '',
+          maxHit: '',
+          avgHit: ''
         },
         {
           id: 2,
-          money: '',
-          exp: '',
-          time: '',
-          ratio: ''
+          minDmg: '',
+          maxDmg: '',
+          addAttr: '',
+          minHit: '',
+          maxHit: '',
+          avgHit: ''
         }
       ],
       showResult: false,
@@ -106,47 +121,45 @@ export default {
     }
   },
   methods: {
-    convert_time(time) {
-      const str = time.split(':')
-      // return (parseInt(str[0], 10)) * 60 + (parseInt(str[1], 10));
-      return +str[0] * 60 + +str[1]
+    preventEmpty() {
+      if (this.main_attr === '') this.main_attr = 0
+      this.weapons.forEach(element => {
+        if (element.minDmg === '') element.minDmg = 0
+        if (element.maxDmg === '') element.maxDmg = 0
+        if (element.addAttr === '') element.addAttr = 0
+      })
+    },
+    calculateDamage(weapon, value) {
+      const strength =
+        parseInt(this.main_attr, 10) + parseInt(weapon.addAttr, 10)
+      return value * (1 + strength / 10)
+    },
+    calculateAverageHit(weapon) {
+      return (parseInt(weapon.minHit, 10) + parseInt(weapon.maxHit, 10)) / 2
     },
     compare() {
-      const ratio_one =
-        this.weapons[0].time !== ''
-          ? this.weapons[0].exp / this.convert_time(this.weapons[0].time)
-          : 0
-      const ratio_two =
-        this.weapons[1].time !== ''
-          ? this.weapons[1].exp / this.convert_time(this.weapons[1].time)
-          : 0
-      const ratio_three =
-        this.weapons[2].time !== ''
-          ? this.weapons[2].exp / this.convert_time(this.weapons[2].time)
-          : 0
+      this.preventEmpty()
 
-      console.log(ratio_one, ratio_two, ratio_three)
+      this.weapons.forEach(element => {
+        element.minHit = this.calculateDamage(element, element.minDmg)
+        element.maxHit = this.calculateDamage(element, element.maxDmg)
+        element.avgHit = this.calculateAverageHit(element)
+      })
 
-      if (ratio_one >= ratio_two && ratio_one >= ratio_three) {
-        this.winner = this.weapons[0]
-        this.weapons[0].ratio = ratio_one
-      } else if (ratio_two >= ratio_three && ratio_two >= ratio_one) {
-        this.winner = this.weapons[1]
-        this.weapons[1].ratio = ratio_two
-      } else {
-        this.winner = this.weapons[2]
-        this.weapons[2].ratio = ratio_three
-      }
+      this.weapons[0].avgHit >= this.weapons[1].avgHit
+        ? (this.winner = this.weapons[0])
+        : (this.winner = this.weapons[1])
+
       this.showResult = true
 
       return this.winner
     },
     reset() {
       this.weapons.forEach(element => {
-        element.money = ''
-        element.exp = ''
-        element.time = ''
-        element.ratio = ''
+        element.minDmg = ''
+        element.maxDmg = ''
+        element.addAttr = ''
+        element.avgHit = ''
       })
     }
   }
@@ -161,14 +174,24 @@ export default {
   flex-wrap: wrap;
 
   &-first,
-  &-second {
-    flex: 45%;
+  &-second,
+  .result {
+    flex: 30%;
     flex-grow: 1;
     padding: 10px 0 20px;
 
     label {
       display: block;
       margin: 10px 0 0;
+    }
+  }
+
+  .result {
+    align-self: center;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    &.show {
+      opacity: 1;
     }
   }
 

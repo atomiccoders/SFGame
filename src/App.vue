@@ -29,6 +29,7 @@ export default {
 }
 body {
   background: radial-gradient(ellipse at center, #00374b 0%, #002533 100%);
+  overflow-x: hidden;
 }
 #app {
   // font-family: "Avenir", Helvetica, Arial, sans-serif;
@@ -38,6 +39,8 @@ body {
   text-align: center;
   height: 100vh;
   color: #f0c042;
+  position: relative;
+  overflow-x: hidden;
 }
 #nav {
   list-style-type: none;

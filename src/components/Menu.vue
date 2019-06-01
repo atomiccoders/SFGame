@@ -6,31 +6,31 @@
     </span>
     <ul>
       <li>
-        <router-link :to="{ name: 'home' }" @click.native="closeMenu">
-          Start
-        </router-link>
+        <router-link :to="{ name: 'home' }" @click.native="closeMenu"
+          >Start</router-link
+        >
       </li>
       <li>
-        <router-link :to="{ name: 'about' }" @click.native="closeMenu">
-          O aplikacji
-        </router-link>
+        <router-link :to="{ name: 'about' }" @click.native="closeMenu"
+          >O aplikacji</router-link
+        >
       </li>
       <li>Kalkulatory</li>
       <li>
-        <router-link :to="{ name: 'missions' }" @click.native="closeMenu">
-          Misje
-        </router-link>
+        <router-link :to="{ name: 'missions' }" @click.native="closeMenu"
+          >Misje</router-link
+        >
       </li>
       <li>
-        <router-link :to="{ name: 'weapons' }" @click.native="closeMenu">
-          Bronie
-        </router-link>
+        <router-link :to="{ name: 'weapons' }" @click.native="closeMenu"
+          >Bronie</router-link
+        >
       </li>
       <li>Informacje</li>
       <li>
-        <router-link to="/misje" @click.native="closeMenu">
-          Profesje i Rasy
-        </router-link>
+        <router-link to="/misje" @click.native="closeMenu"
+          >Profesje i Rasy</router-link
+        >
       </li>
     </ul>
   </label>

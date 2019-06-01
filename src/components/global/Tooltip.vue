@@ -1,10 +1,16 @@
 <template>
-  <div class="t-right t-sm full-width" data-tooltip="Top Tooltip">?</div>
+  <div class="t-right t-sm full-width" :data-tooltip="msg">?</div>
 </template>
 
 <script>
 export default {
-  name: 'Tooltip'
+  name: 'Tooltip',
+  props: {
+    msg: {
+      type: String,
+      default: ''
+    }
+  }
 }
 </script>
 
