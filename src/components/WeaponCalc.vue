@@ -10,9 +10,27 @@
           id="main_attr"
           v-model="main_attr"
         />
-        <Tooltip
-          msg="Wojownik/Berserk/Palladyn - Siła\n Mag - Inteligencja\n Zwiadowca/Zabójca - Zręczność"
-        />
+        <div class="info-badge">
+          <b-badge pill variant="warning" id="info">
+            <span class="sign">?</span>
+          </b-badge>
+          <b-tooltip target="info" placement="right">
+            <table class="table table-bordered table-sm text-white m-0 p-0">
+              <tr>
+                <td><small>Wojownik Berserk Palladyn</small></td>
+                <td class="align-middle">Siła</td>
+              </tr>
+              <tr>
+                <td><small>Mag</small></td>
+                <td class="align-middle">Inteligencja</td>
+              </tr>
+              <tr>
+                <td><small>Zwiadowca Zabójca</small></td>
+                <td class="align-middle">Zręczność</td>
+              </tr>
+            </table>
+          </b-tooltip>
+        </div>
       </div>
 
       <div class="weapon-first">
@@ -168,6 +186,21 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+.info-badge {
+  display: inline-block;
+  margin: 0 10px;
+  #info {
+    position: relative;
+    top: 8px;
+    width: 25px;
+    height: 25px;
+    .sign {
+      position: absolute;
+      top: 8px;
+      left: 9px;
+    }
+  }
+}
 .weapon {
   display: flex;
   flex-direction: row;

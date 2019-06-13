@@ -1,18 +1,19 @@
 <template>
   <div id="app">
-    <Menu />
+    <!-- <Menu />
     <img alt="Vue logo" src="./assets/sflogo.png" />
-    <router-view />
+    <router-view /> -->
+    <Layout />
   </div>
 </template>
 
 <script>
-import Menu from './components/Menu'
+import Layout from '@/views/Common/Layout'
 
 export default {
   name: 'App',
   components: {
-    Menu
+    Layout
   }
 }
 </script>

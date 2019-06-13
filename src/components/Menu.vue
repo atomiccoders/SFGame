@@ -12,10 +12,10 @@
       </li>
       <li>
         <router-link :to="{ name: 'about' }" @click.native="closeMenu"
-          >O aplikacji</router-link
+          >O Tawernie</router-link
         >
       </li>
-      <li>Kalkulatory</li>
+      <li>Wieszczka-Porównywaczka</li>
       <li>
         <router-link :to="{ name: 'missions' }" @click.native="closeMenu"
           >Misje</router-link
@@ -26,7 +26,7 @@
           >Bronie</router-link
         >
       </li>
-      <li>Informacje</li>
+      <li>Biblioteka</li>
       <li>
         <router-link to="/misje" @click.native="closeMenu"
           >Profesje i Rasy</router-link
