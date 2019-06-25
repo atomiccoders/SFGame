@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h1>Porównywarka opłacalności misji</h1>
     <form class="task">
       <div class="task-first">
         <label for="money_one">Złoto</label>

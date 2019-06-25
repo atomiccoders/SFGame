@@ -2,7 +2,7 @@
   <div class="container about">
     <div class="row">
       <div class="col text-center">
-        <h1>Krainy naszego Świata</h1>
+        <h1>Krainy naszego <span class="secondary-color">Świata</span></h1>
         <br />
       </div>
     </div>

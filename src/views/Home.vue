@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="home">
-      <h1>WITAJ PODRÓŻNIKU</h1>
+      <h1>WITAJ <span class="secondary-color">PODRÓŻNIKU</span></h1>
       <p>
         Znalazłeś się w miejscu gdzie możesz odpocząć i nabrać sił przed dalszą
         podróżą.

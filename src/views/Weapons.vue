@@ -1,5 +1,6 @@
 <template>
-  <div class="missions">
+  <div class="weapons">
+    <h1>Porównywarka <span class="secondary-color">broni</span></h1>
     <WeaponCalc />
   </div>
 </template>
@@ -9,7 +10,7 @@
 import WeaponCalc from '@/components/WeaponCalc.vue'
 
 export default {
-  name: 'Missions',
+  name: 'Weapons',
   components: {
     WeaponCalc
   }

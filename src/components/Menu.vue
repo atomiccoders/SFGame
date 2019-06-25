@@ -28,7 +28,7 @@
       </li>
       <li>Biblioteka</li>
       <li>
-        <router-link to="/misje" @click.native="closeMenu">
+        <router-link :to="{ name: 'characters' }" @click.native="closeMenu">
           Profesje i Rasy
         </router-link>
       </li>
