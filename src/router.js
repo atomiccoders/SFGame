@@ -33,6 +33,24 @@ export default new Router({
       name: 'weapons',
       component: () =>
         import(/* webpackChunkName: "weapons" */ './views/Weapons.vue')
+    },
+    // {
+    //   path: '/lib/characters',
+    //   name: 'characters',
+    //   component: () =>
+    //     import(/* webpackChunkName: "weapons" */ './views/Characters.vue')
+    // },
+    {
+      path: '/lib/locations',
+      name: 'locations',
+      component: () =>
+        import(/* webpackChunkName: "weapons" */ './views/Locations.vue')
+    },
+    {
+      path: '/lib/experience',
+      name: 'experience',
+      component: () =>
+        import(/* webpackChunkName: "weapons" */ './views/Experience.vue')
     }
   ]
 })
