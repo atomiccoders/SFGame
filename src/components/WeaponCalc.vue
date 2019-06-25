@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h1>Porównywarka broni</h1>
     <form class="weapon">
       <div class="main_attr">
         <label for="main_attr">Cecha główna</label>

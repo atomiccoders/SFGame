@@ -34,12 +34,12 @@ export default new Router({
       component: () =>
         import(/* webpackChunkName: "weapons" */ './views/Weapons.vue')
     },
-    // {
-    //   path: '/lib/characters',
-    //   name: 'characters',
-    //   component: () =>
-    //     import(/* webpackChunkName: "weapons" */ './views/Characters.vue')
-    // },
+    {
+      path: '/lib/characters',
+      name: 'characters',
+      component: () =>
+        import(/* webpackChunkName: "weapons" */ './views/Characters.vue')
+    },
     {
       path: '/lib/locations',
       name: 'locations',

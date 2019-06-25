@@ -19,7 +19,44 @@ export default {
 </script>
 
 <style lang="scss">
-@import url('https://fonts.googleapis.com/css?family=Kalam&display=swap');
+// @import url('https://fonts.googleapis.com/css?family=Kalam&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Changa:800&display=swap');
+
+@font-face {
+  font-family: 'tobi_blackregular';
+  src: url('./assets/fonts/tobi_black-webfont.eot');
+  src: url('./assets/fonts/tobi_black-webfont.eot?#iefix') format('embedded-opentype'),
+    url('./assets/fonts/tobi_black-webfont.woff2') format('woff2'),
+    url('./assets/fonts/tobi_black-webfont.woff') format('woff'),
+    url('./assets/fonts/tobi_black-webfont.ttf') format('truetype'),
+    url('./assets/fonts/tobi_black-webfont.svg#tobi_blackregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/**
+ * Fix fonts that render as bold in Firefox
+ *
+ * Put this near the top of your style.css
+ * Before any overriding styles
+ */
+
+html {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  font-weight: 400;
+}
+
+/**
+ * Firefox specific rule
+ */
+
+@-moz-document url-prefix() {
+  body {
+    font-weight: lighter !important;
+  }
+}
 
 *,
 *:before,
@@ -34,14 +71,18 @@ body {
 }
 #app {
   // font-family: "Avenir", Helvetica, Arial, sans-serif;
-  font-family: 'Kalam', Arial, sans-serif;
+  font-family: 'tobi_blackregular', 'Changa', Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   height: 100vh;
-  color: #f0c042;
+  // color: #f0c042;
+  color: #fff;
   position: relative;
   overflow-x: hidden;
+  .secondary-color {
+    color: #ffc21a;
+  }
 }
 #nav {
   list-style-type: none;
@@ -55,7 +96,8 @@ body {
       font-weight: bold;
       color: #795f1f;
       &.router-link-exact-active {
-        color: #f0c042;
+        // color: #f0c042;
+        color: #ffc21a;
       }
     }
   }

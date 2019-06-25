@@ -1,5 +1,8 @@
 <template>
   <div class="missions">
+    <h1>
+      Porównywarka opłacalności <span class="secondary-color">misji</span>
+    </h1>
     <MissionCalc />
   </div>
 </template>

@@ -1,5 +1,5 @@
 <template>
-  <footer>
+  <footer class="secondary-color">
     Copyright &copy; 2019 - <a href="http://atomiccode.pl" target="_blank">Atomiccode.pl</a>
   </footer>
 </template>
