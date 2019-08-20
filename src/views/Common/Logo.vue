@@ -9,7 +9,7 @@
     <img src="http://apps.pathstoadventure.com/Tavern-Sign-Crafter/symbol-3.png"
       style="border:0px; width:400px; height:250px; position:absolute; top:50px; left:40px;" />
 
-    <div id="CustomWords" style="width:200px;position:absolute;left:50px;top:95px;" >
+    <div id="CustomWords" style="width:200px;position:absolute;left:42px;top:90px;" >
       <!-- <img src="http://apps.pathstoadventure.com/Tavern-Sign-Crafter/letter-t.png" />
       <img src="http://apps.pathstoadventure.com/Tavern-Sign-Crafter/letter-a.png" />
       <img src="http://apps.pathstoadventure.com/Tavern-Sign-Crafter/letter-w.png" />
