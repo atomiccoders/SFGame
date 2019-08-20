@@ -110,7 +110,7 @@ input[type='text'] {
   color: #f0c042;
   text-align: center;
   font-size: 16px;
-  font-family: 'Kalam', Arial, sans-serif;
+  // font-family: 'Kalam', Arial, sans-serif;
   background: #151515;
   box-shadow: #151515 0px 0px 1px 3px;
   transition: border-color 0.2s ease;
@@ -126,7 +126,7 @@ input[type='reset'] {
   padding: 5px 15px;
   color: #f0c042;
   font-size: 16px;
-  font-family: 'Kalam', Arial, sans-serif;
+  // font-family: 'Kalam', Arial, sans-serif;
   text-transform: uppercase;
   font-weight: bold;
   box-shadow: #00202c 0px 0px 1px 5px;
